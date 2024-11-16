@@ -1,0 +1,24 @@
+name: Parse Release Body Workflow
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  extract-items:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Extract Items from Release Body
+        run: |
+          echo "Release Body:"
+          echo "${{ github.event.release.body }}"
+
+          echo "Extracted Items:"
+          IFS=$'\n' # Set Internal Field Separator to newline
+          items=($(echo "${{ github.event.release.body }}" | grep -oP '(?<=- ).*'))
+          for item in "${items[@]}"; do
+            echo "$item"
+          done
