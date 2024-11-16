@@ -3,6 +3,10 @@ name: Manual workflow
 on:
   workflow_dispatch:
     inputs:
+      dataModules:
+        description: List of Data Modules to deploy
+        required: true
+        type: tag        
       logLevel:
         description: 'Log level'
         required: true
