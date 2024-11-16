@@ -4,12 +4,13 @@ on:
   workflow_dispatch:
     inputs:      
       releaseDms:
-        description: 'Log level'
+        description: 'Data Modules to Deploy'
         required: true
         default: 'All'
         type: choice
         options:
         - All
+        - ESOP Modules
         - Specify DM's
       dataModules:
         description: List of Data Modules to deploy (comma separated)
