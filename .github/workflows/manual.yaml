@@ -15,7 +15,7 @@ on:
       dataModules:
         description: List of Data Modules to deploy (comma separated)
         required: true
-        type: text         
+        type: string         
       tags:
         description: 'Test scenario tags'
         required: false
@@ -30,10 +30,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "Log level: $LEVEL"
+          echo "Log level: $RELEASE"
           echo "Tags: $TAGS"
           echo "Environment: $ENVIRONMENT"
         env:
-          LEVEL: ${{ inputs.logLevel }}
-          TAGS: ${{ inputs.tags }}
+          RELEASE: ${{ inputs.releaseDms }}
+          DATA_MODULES: ${{ inputs.dataModules }}
           ENVIRONMENT: ${{ inputs.environment }}
